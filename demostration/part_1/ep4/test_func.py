@@ -1,6 +1,6 @@
 import pytest
 
-from app import sum_func
+from app import sum_func, call_method
 
 
 class TestSumFunc:
@@ -26,9 +26,9 @@ class TestSumFunc:
     def test_sum_numbers(self, tripl):
         assert (tripl[0] + tripl[1]) == tripl[2]
 
-    @pytest.mark.xfail()
-    def test_have_to_fail(self):
-        raise Exception()
+    def test_has_to_fail(self):
+        with pytest.raises(Exception):
+            call_method()
 
     @pytest.mark.skip(reason="OK")
     def test_skip(self):
